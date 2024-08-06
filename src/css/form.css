@@ -1,0 +1,26 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.bth {
+  color: #ffffff;
+  width: 100px;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 200px;
+}
+
+.text {
+  resize: none;
+}
