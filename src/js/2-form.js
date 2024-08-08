@@ -32,7 +32,7 @@ localStorageChek();
 
 const onFormFieldInput = event => {
   const inputName = event.target.name;
-  const inputValue = event.target.value;
+  const inputValue = event.target.value.trim;
 
   //   console.log(`${inputName}: ${inputValue}`);
   formData[inputName] = inputValue;

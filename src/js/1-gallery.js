@@ -1,80 +1,88 @@
 const images = [
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
-    description: 'Hokkaido Flower',
+    ImageDescription: 'Hokkaido Flower',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg',
-    description: 'Container Haulage Freight',
+    ImageDescription: 'Container Haulage Freight',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg',
-    description: 'Aerial Beach View',
+    ImageDescription: 'Aerial Beach View',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg',
-    description: 'Flower Blooms',
+    ImageDescription: 'Flower Blooms',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg',
-    description: 'Alpine Mountains',
+    ImageDescription: 'Alpine Mountains',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg',
-    description: 'Mountain Lake Sailing',
+    ImageDescription: 'Mountain Lake Sailing',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg',
-    description: 'Alpine Spring Meadows',
+    ImageDescription: 'Alpine Spring Meadows',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg',
-    description: 'Nature Landscape',
+    ImageDescription: 'Nature Landscape',
   },
   {
-    preview:
+    smallImage:
       'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
-    original:
+    largeImage:
       'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
-    description: 'Lighthouse Coast Sea',
+    ImageDescription: 'Lighthouse Coast Sea',
   },
 ];
-// const gallery = document.querySelector('.gallery');
+
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const gallery = document.querySelector('.gallery');
 // gallery.addEventListener('click', openModal);
 
 const galleryItems = images
   .map(
-    ({ preview, original, description }) => `   <li class="gallery-item">
-        <a class="gallery-link" href="${original}">
+    ({
+      smallImage,
+      largeImage,
+      ImageDescription,
+    }) => `   <li class="gallery-item">
+        <a class="gallery-link" href="${largeImage}">
           <img
             class="gallery-image"
-            src='${preview}'
-            data-source="${original}"
-            alt='${description}'
+            src='${smallImage}'
+            data-source="${largeImage}"
+            alt='${ImageDescription}'
           />
         </a>
       </li>`
@@ -82,6 +90,12 @@ const galleryItems = images
   .join('');
 
 gallery.insertAdjacentHTML('beforeend', galleryItems);
+new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+  overlayOpacity: 0.8,
+});
 
 // const modal = basicLightbox.create(`
 //     <img src="" width="800" height="600">
